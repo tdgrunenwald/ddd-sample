@@ -21,3 +21,18 @@ def _(context):
 @then('it matches {pattern}')
 def _(context, pattern: str):
     assert context.string == pattern, f"'{context.string}' != '{pattern}'"
+
+
+@given("currency text representation {repr}")
+def _(context, repr: str):
+    context.repr = repr
+
+
+@when("currency text representation is parsed")
+def _(context):
+    context.currency = Currency(value=USD.toValue(context.repr), format=USD)
+
+
+@then("the resulting currency object has value {value}")
+def _(context, value: int):
+    assert context.currency.value == value, f"{context.currency.value} != {value}"
