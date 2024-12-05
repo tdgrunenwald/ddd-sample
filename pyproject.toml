@@ -20,3 +20,6 @@ build-backend = "hatchling.build"
 dev = [
     "ruff>=0.8.2",
 ]
+
+[tool.uv.workspace]
+members = ["features/steps"]
