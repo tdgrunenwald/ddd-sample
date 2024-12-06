@@ -98,7 +98,11 @@ version = "0.1.0"
 source = { virtual = "features/steps" }
 dependencies = [
     { name = "behave" },
+    { name = "ddd-sample" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "behave", specifier = ">=1.2.6" }]
+requires-dist = [
+    { name = "behave", specifier = ">=1.2.6" },
+    { name = "ddd-sample", editable = "." },
+]
