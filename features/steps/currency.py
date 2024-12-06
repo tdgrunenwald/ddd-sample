@@ -33,6 +33,6 @@ def _(context):
     context.currency = Currency(value=USD.toValue(context.repr), format=USD)
 
 
-@then("the resulting currency object has value {value}")
+@then("the resulting currency object has value {value:d}")
 def _(context, value: int):
     assert context.currency.value == value, f"{context.currency.value} != {value}"

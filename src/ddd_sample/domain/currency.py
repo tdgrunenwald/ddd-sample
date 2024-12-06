@@ -17,12 +17,17 @@ class USD(CurrencyFormatMixin):
     def toValue(cls, repr: str) -> int:
         repr = repr.strip()
         repr = repr.replace(",", "")
-        match = re.search(r"^\$(\d*)\.?(\d?\d?)$", repr)
-        print(match.groups())
-#        dollars = int(match.group(1))
-#        cents = int(match.group(2))
+        groups = re.search(r"^\$(\d*)\.?(\d?\d?)$", repr).groups()
 
-        return 0#dollars * 100 + cents
+        dollars_str = groups[0]
+        dollars = int(dollars_str) if dollars_str else 0
+
+        cents_str = groups[1]
+        if cents_str and 1 == len(cents_str):
+            cents_str += '0'
+        cents = int(cents_str) if cents_str else 0
+
+        return dollars * 100 + cents
 
     @abstractclassmethod
     def toString(cls, value: int) -> str:
