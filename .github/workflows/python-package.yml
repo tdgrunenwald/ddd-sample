@@ -35,4 +35,4 @@ jobs:
         uv run ruff check
     - name: Test with behave
       run: |
-        uv run behave
+        uv run --project features/steps behave
